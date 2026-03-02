@@ -503,7 +503,7 @@ def generar_excel_multitabla(df_detalles):
 
 # --- INTERFAZ DE STREAMLIT ---
 
-st.set_page_config(page_title="Calculo Contingencia SENIAT", page_icon="⚖️", layout="wide")
+st.set_page_config(page_title="Calculo Contingencia ", page_icon="⚖️", layout="wide")
 
 st.sidebar.header("⚙️ Parámetros de Auditoría")
 
@@ -514,7 +514,7 @@ tipo_cierre_seleccionado = st.sidebar.selectbox("Tipo de Cierre ISLR", options=[
 st.sidebar.subheader("📅 Evaluación de Contingencia")
 fecha_calculo = st.sidebar.date_input("Fecha de Cálculo de Mora", datetime.now().date())
 
-st.title("⚖️ Auditoría de Contingencias SENIAT")
+st.title("⚖️ Auditoría de Contingencias")
 st.write("Cálculo de Contingencia por pagos tardados y omisiones (Incluye Multas COT Art. 103 y 108).")
 
 df_calendario = obtener_calendario_db()
@@ -685,4 +685,5 @@ if archivo_subido is not None and not df_calendario.empty:
             file_name=f"Auditoria_Seniat_{info['digito']}_{info['fecha_auditoria'].replace('/','-')}.xlsx", 
             mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
             key="btn_descargar_auditoria" 
+
         )
