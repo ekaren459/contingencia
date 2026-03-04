@@ -138,7 +138,7 @@ def conectar_contingencia():
 
 conn = conectar_contingencia()
 if conn:
-    st.success("✅ Conectado exitosamente a Supabase")
+    st.success("✅ Conectado exitosamente ")
     conn.close()
 
 
@@ -1040,3 +1040,4 @@ else:
     </div>
 
     """, unsafe_allow_html=True)
+
