@@ -685,7 +685,7 @@ with st.sidebar:
     st.markdown("---")
     st.markdown(
         "<div style='font-size:0.7rem;color:#94a3b8;text-align:center;line-height:1.6;'>"
-        "SENIAT · Auditoría Tributaria<br>COT Art. 103 &amp; 108</div>",
+        "Auditoría Tributaria<br>COT Art. 103 &amp; 108</div>",
         unsafe_allow_html=True
     )
 
@@ -1040,4 +1040,5 @@ else:
     </div>
 
     """, unsafe_allow_html=True)
+
 
