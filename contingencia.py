@@ -672,7 +672,7 @@ def generar_excel_multitabla(df_detalles):
 # ============================================================
 # INTERFAZ
 # ============================================================
-st.set_page_config(page_title="Auditoría de Contingencias SENIAT", page_icon="⚖️", layout="wide")
+st.set_page_config(page_title="Auditoría de Contingencias", page_icon="⚖️", layout="wide")
 
 with st.sidebar:
     st.markdown("## ⚙️ Configuración")
@@ -697,7 +697,7 @@ with col_titulo:
     st.markdown("# Auditoría de Contingencias Tributarias")
     st.markdown(
         "<p style='color:#64748b;font-size:0.88rem;margin-top:-0.5rem;'>"
-        "Análisis de cumplimiento SENIAT &nbsp;·&nbsp; Cálculo de mora &nbsp;·&nbsp; Multas COT Art. 103 y 108"
+        "Análisis de cumplimiento &nbsp;·&nbsp; Cálculo de mora &nbsp;·&nbsp; Multas COT Art. 103 y 108"
         "</p>", unsafe_allow_html=True
     )
 st.markdown("---")
@@ -836,7 +836,7 @@ if archivo_subido is not None and not df_calendario.empty:
     st.markdown(
         "<p style='color:#64748b;font-size:0.88rem;margin-top:-0.5rem;margin-bottom:1rem;'>"
         "Comparativo entre la fecha en que el contribuyente realizó cada pago "
-        "y la fecha límite oficial del SENIAT. Solo se muestran registros con fecha de pago registrada."
+        "y la fecha límite oficial . Solo se muestran registros con fecha de pago registrada."
         "</p>", unsafe_allow_html=True
     )
 
@@ -850,12 +850,12 @@ if archivo_subido is not None and not df_calendario.empty:
         # Construir tabla de auditoría de fechas
         df_fechas = df_con_pago[[
             'Fase_Fiscal', 'Periodo', 'Impuesto', 'Frecuencia',
-            'Fecha Límite SENIAT', 'Fecha de Pago Real',
+            'Fecha Límite ', 'Fecha de Pago Real',
             'Días de Mora/Desviación', 'Estatus_Fiscal', 'Monto(Bs.)'
         ]].copy()
 
         # Convertir a datetime para comparaciones
-        df_fechas['_limite_dt'] = pd.to_datetime(df_fechas['Fecha Límite SENIAT'], format='%d/%m/%Y', errors='coerce')
+        df_fechas['_limite_dt'] = pd.to_datetime(df_fechas['Fecha Límite '], format='%d/%m/%Y', errors='coerce')
         df_fechas['_pago_dt']   = pd.to_datetime(df_fechas['Fecha de Pago Real'],  format='%d/%m/%Y', errors='coerce')
 
         # Columna de diagnóstico de puntualidad
@@ -894,7 +894,7 @@ if archivo_subido is not None and not df_calendario.empty:
 
             # Tabla detalle con formato
             cols_mostrar = ['Periodo', 'Impuesto', 'Frecuencia',
-                            'Fecha Límite SENIAT', 'Fecha de Pago Real',
+                            'Fecha Límite ', 'Fecha de Pago Real',
                             'Días de Mora/Desviación', 'Diagnóstico', 'Monto(Bs.)']
             df_vista = df_f[cols_mostrar].copy()
 
@@ -1038,4 +1038,5 @@ else:
             Formato: <strong>.xlsx</strong> &nbsp;·&nbsp; Encabezados en la fila 4
         </div>
     </div>
+
     """, unsafe_allow_html=True)
